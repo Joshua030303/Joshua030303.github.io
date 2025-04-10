@@ -1,25 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A04</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1e293b;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #38bdf8;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      gap: 40px;
+    }
+
+    .profile-img {
+      width: 250px;
+      border-radius: 20px;
+      border: 4px solid #0ea5e9;
+      box-shadow: 0 0 25px #0ea5e9;
+    }
+
+    .intro {
+      max-width: 500px;
+    }
+
+    .intro h2 {
+      font-size: 2rem;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #fff;
+    }
+
+    .highlight {
+      color: #38bdf8;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0284c7;
+    }
+
+    .about {
+      background-color: #1e293b;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .about h2 {
+      color: #38bdf8;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .card {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      padding: 20px;
+      border-radius: 20px;
+      width: 300px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 0 20px #0ea5e9;
+    }
+
+    .card h5 {
+      color: #38bdf8;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>My website</h1>
-    
-    <button onclick="alert('Hello, World!')">Click Me</button>
+
+  <header>
+    <h1>My Profile</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <img src="profile.jpg" alt="Joshua" class="profile-img">
+    <div class="intro">
+      <h2>Hello, It's Me</h2>
+      <h1>Joshua <span class="highlight"></span></h1>
+      <h2>And I'm a <span class="highlight">Web Developer</span></h2>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About <span class="highlight">Me</span></h2>
+    <p>I make UI design and develop services for websites and applications. I help businesses create user-friendly and
+      visually appealing digital products that meet their specific needs and goals. My services include user research,
+      wireframing, prototyping, visual design, and front-end development.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h5>Activity 4</h5>
+        <p>Click to Activity 4</p>
+        <a href="A04/index.html" class="btn">View Project</a>
+      </div>
+      <div class="card">
+        <h5>Card title</h5>
+        <p>Some quick example text to build on the card title.</p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+      <div class="card">
+        <h5>Card title</h5>
+        <p>Some quick example text to build on the card title.</p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
