@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A07</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <style>
+    .picture-container {
+      width: 100%;
+      max-width: 300px;
+      height: 440px;
+      background-color: lightgrey;
+      overflow: hidden;
+      margin: 0 auto;
+      border-radius: 20px;
+    }
+
+    .picture-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <div class="container-fluid py-3" style="background-color: rgb(79, 75, 193);">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="h3 text-white">Yu-Gi-Oh!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="container mt-3 mb-2">
+    <div class="row">
+      <div class="col text-center">
+        <button onclick="HOME()" class="btn btn-secondary rounded-5 py-2 px-4">HOME</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <div class="card rounded-5 p-3 mx-auto text-center" style="max-width: 500px">
+          <form>
+            <input type="text" class="form-control rounded-5 p-2 mb-3" id="yugiohNameSearch"
+              placeholder="Enter card name">
+            <input onclick="getYuGiOh()" type="button" class="btn btn-primary rounded-5 py-2 px-3" value="Search">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="container mt-3" id="yugiohMainContainer" style="display: none;">
+    <div class="row">
+      <div class="col">
+        <div class="card text-center p-5 rounded-5 shadow mx-auto" style="max-width: 500px">
+          <div class="picture-container mb-3" id="picture-container">
+            <img src="" id="img">
+          </div>
+          <div class="h5" id="name">Card Name</div>
+          <div class="card rounded-5 p-2 mt-2 mb-4" id="type">Card Type</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var colors = {
+      "Spell Card": "#A7D3F7",
+      "Trap Card": "#F7A8C2",
+      "Monster": "#B2E2B2"
+    };
+
+    const getYuGiOh = async () => {
+      document.getElementById("yugiohMainContainer").style.display = "block";
+
+      var yugiohNameSearch = document.getElementById("yugiohNameSearch").value;
+      var pictureContainer = document.getElementById("picture-container");
+
+      try {
+        const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=' + encodeURIComponent(yugiohNameSearch));
+        const data = await response.json();
+
+        if (data.data.length > 0) {
+          const yugioh = data.data[0];
+
+          document.getElementById("name").innerHTML = yugioh.name;
+          document.getElementById("type").innerHTML = yugioh.type;
+          document.getElementById("img").src = yugioh.card_images[0].image_url;
+
+          const colorKey = yugioh.type.includes("Spell") ? "Spell Card" :
+            yugioh.type.includes("Trap") ? "Trap Card" : "Monster";
+
+          document.getElementById("type").style.backgroundColor = colors[colorKey] || "#ccc";
+          pictureContainer.style.backgroundColor = colors[colorKey] || "#ccc";
+        } else {
+          alert("Card not found. Please check the name and try again.");
+          document.getElementById("yugiohMainContainer").style.display = "none";
+        }
+      } catch (error) {
+        alert("Error fetching data. Please try again later.");
+        document.getElementById("yugiohMainContainer").style.display = "none";
+      }
+    }
+
+    const HOME = () => {
+      window.location.href = "../index.html";
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
