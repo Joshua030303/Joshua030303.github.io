@@ -1,123 +1,150 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>A06</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A06</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
-    <style>
-        body {
-            background-color: black;
-            color: white;
-        }
+  <style>
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-        .gallery-title {
-            color: white;
-        }
+    .gallery-title {
+      color: inherit;
+    }
 
-        .card-img-top {
-            object-fit: cover;
-            height: 250px;
-            width: 100%;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-    </style>
+    .card-img-top {
+      object-fit: cover;
+      height: 250px;
+      width: 100%;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
 
-    <script>
-        function inquireMouseEnter() {
-            var inquireButton = document.getElementById("privacyButton");
-            inquireButton.style.backgroundColor = "rgb(239, 239, 239)";
-            inquireButton.classList.add("shadow");
-        }
+    #footer,
+    #footerShow {
+      transition: all 0.3s ease;
+    }
+  </style>
 
-        function inquireMouseLeave() {
-            var inquireButton = document.getElementById("privacyButton");
-            inquireButton.style.backgroundColor = "black";
-            inquireButton.classList.remove("shadow");
-        }
+  <script>
+    let mode = "light";
 
-        function hideFooter() {
-            var footerElement = document.getElementById("footer");
-            footerElement.style.display = "none";
+    function changeMode() {
+      const colorBtn = document.getElementById("colorBtn");
+      const homeBtn = document.getElementById("homeBtn");
 
-            var footerShowElement = document.getElementById("footerShow");
-            footerShowElement.style.display = "block";
-        }
+      mode = (mode === "light") ? "dark" : "light";
 
-        function showFooter() {
-            var footerElement = document.getElementById("footer");
-            footerElement.style.display = "block";
+      const btnText = (mode === "dark") ? "Light Mode" : "Dark Mode";
+      const btnClass = (mode === "dark") ? "btn-light" : "btn-dark";
+      const homeClass = (mode === "dark") ? "btn-light" : "btn-dark";
 
-            var footerShowElement = document.getElementById("footerShow");
-            footerShowElement.style.display = "none";
-        }
+      
+      colorBtn.classList.remove("btn-light", "btn-dark");
+      colorBtn.classList.add(btnClass);
+      colorBtn.innerHTML = btnText;
 
-        function goHome() {
-            window.location.href = "../index.html";
-        }
-    </script>
+      
+      homeBtn.classList.remove("btn-light", "btn-dark");
+      homeBtn.classList.add(homeClass);
+
+      
+      document.documentElement.setAttribute("data-bs-theme", mode);
+    }
+
+    function inquireMouseEnter() {
+      const inquireButton = document.getElementById("privacyButton");
+      if (inquireButton) {
+        inquireButton.style.backgroundColor = "rgb(239, 239, 239)";
+        inquireButton.classList.add("shadow");
+      }
+    }
+
+    function inquireMouseLeave() {
+      const inquireButton = document.getElementById("privacyButton");
+      if (inquireButton) {
+        inquireButton.style.backgroundColor = "black";
+        inquireButton.classList.remove("shadow");
+      }
+    }
+
+    function hideFooter() {
+      document.getElementById("footer").style.display = "none";
+      document.getElementById("footerShow").style.display = "block";
+    }
+
+    function showFooter() {
+      document.getElementById("footer").style.display = "block";
+      document.getElementById("footerShow").style.display = "none";
+    }
+
+    function goHome() {
+      window.location.href = "../index.html";
+    }
+  </script>
 </head>
 
 <body>
 
-    <div class="container-fluid p-3 mb-3" style="background-color: black; color: white;">
-        <div class="d-flex justify-content-between align-items-center">
-            <button onclick="goHome()" class="btn btn-light rounded-pill">Home</button>
-            <div class="h2 text-center flex-grow-1">My Gallery</div>
-            <div style="width: 75px;"></div>
-        </div>
+ 
+  <div class="container-fluid p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <button id="homeBtn" onclick="goHome()" class="btn btn-light rounded-pill">Home</button>
+      <div class="h2 text-center flex-grow-1">My Gallery</div>
+      <button id="colorBtn" onclick="changeMode()" class="ms-4 px-3 py-2 btn btn-dark">Dark Mode</button>
     </div>
+  </div>
 
-    <div class="container my-3">
-        <div class="row row-cols-1 row-cols-md-2" id="container-row">
+  
+  <div class="container my-3">
+    <div class="row row-cols-1 row-cols-md-2" id="container-row"></div>
+  </div>
+
+  
+  <div class="container-fluid p-5" id="footer" style="background-color: rgb(240, 240, 240); color: #707070; display: none;">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="mb-4" style="color: black;">Others</h1>
+        <button id="privacyButton" class="btn btn-dark rounded-pill mb-3"
+          onmouseover="inquireMouseEnter()" onmouseleave="inquireMouseLeave()">Privacy</button>
+        <div class="my-2">Dog</div>
+        <div class="my-2">Cat</div>
+        <div class="my-2">Bird</div>
+        <div class="my-2">Rabbit</div>
+        <div class="mt-4">
+          <button onclick="hideFooter()" class="btn btn-outline-dark rounded-pill">Hide</button>
         </div>
+      </div>
     </div>
+  </div>
 
-    
-    <div class="container-fluid p-5" id="footer" style="background-color: rgb(240, 240, 240); color: #707070; display: none;">
-        <div class="row">
-            <div class="col text-center">
-                <h1 class="mb-4" style="color: black;">Others</h1>
-                <button id="privacyButtonFooter" class="btn btn-dark rounded-pill mb-3"
-                    onmouseover="inquireMouseEnter()" onmouseleave="inquireMouseLeave()">Privacy</button>
-
-                <div class="my-2">Dog</div>
-                <div class="my-2">Cat</div>
-                <div class="my-2">Bird</div>
-                <div class="my-2">Rabbit</div>
-
-                <div class="mt-4">
-                    <button onclick="hideFooter()" class="btn btn-outline-dark rounded-pill">Hide</button>
-                </div>
-            </div>
-        </div>
+  
+  <div class="container-fluid p-3" id="footerShow"
+    style="background-color: rgb(240, 240, 240); color: #707070; display: block;">
+    <div class="row">
+      <div class="col text-center">
+        <button onclick="showFooter()" class="btn btn-outline-dark rounded-pill">Show</button>
+      </div>
     </div>
+  </div>
 
-   
-    <div class="container-fluid p-3" id="footerShow"
-        style="background-color: rgb(240, 240, 240); color: #707070; display: block;">
-        <div class="row">
-            <div class="col text-center">
-                <button onclick="showFooter()" class="btn btn-outline-dark rounded-pill">Show</button>
-            </div>
-        </div>
-    </div>
+  
+  <script>
+    var titles = ["Dog Gallery", "Cat Gallery", "Bird Gallery", "Rabbit Gallery"];
+    var pictures = ["dog1.jpg", "cat2.jpeg", "bird3.jpg", "rabbit4.jpg"];
+    var contents = ["dog1", "cat2", "bird3", "rabbit4"];
 
-    <script>
-        var titles = ["Dog Gallery", "Cat Gallery", "Bird Gallery", "Rabbit Gallery"];
-        var pictures = ["dog1.jpg", "cat2.jpeg", "bird3.jpg", "rabbit4.jpg"];
-        var contents = ["dog1", "cat2", "bird3", "rabbit4"];
+    var rowElement = document.getElementById("container-row");
 
-        var rowElement = document.getElementById("container-row");
-
-        for (var i = 0; i < titles.length; i++) {
-            rowElement.innerHTML += `
+    for (var i = 0; i < titles.length; i++) {
+      rowElement.innerHTML += `
         <div class="col mb-4">
-          <div class="card bg-dark border-0">
+          <div class="card bg-dark border-0 text-white">
             <img src="img/${pictures[i]}" class="card-img-top" alt="${titles[i]}">
             <div class="card-body">
               <h5 class="card-title gallery-title">${titles[i]}</h5>
@@ -126,12 +153,12 @@
           </div>
         </div>
       `;
-        }
-    </script>
+    }
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
-    </script>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
 </body>
 
