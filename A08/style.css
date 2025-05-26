@@ -1,0 +1,164 @@
+/*PUT YOUR CUSTOM STYLE HERE*/
+
+/*!This style is important, do not override!*/
+/* Reset some defaults */
+/* Reset some defaults */
+body {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(#0d0d0d, #1a1a1a);
+	color: white;
+	font-family: 'Orbitron', sans-serif;
+	overflow-x: hidden;
+}
+
+@keyframes floatText {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+.back-button-container {
+	margin-top: 1rem;
+}
+
+.back-button {
+	display: inline-block;
+	background: linear-gradient(45deg, #ff6600, #ffcc00);
+	color: #0d0d0d;
+	padding: 0.7rem 1.5rem;
+	border-radius: 30px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1rem;
+	box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+	transition: all 0.3s ease;
+}
+
+.back-button:hover {
+	background: linear-gradient(45deg, #ffcc00, #ff6600);
+	box-shadow: 0 0 25px rgba(255, 204, 0, 0.7);
+	transform: translateY(-3px);
+}
+
+.main-content section {
+	padding: 4rem 2rem;
+	text-align: center;
+}
+
+.intro {
+	background: rgba(206, 11, 11, 0.85);
+	animation: fadeInUp 1.5s ease-in-out;
+}
+
+.intro h1 {
+	font-size: 3rem;
+	color: #ffcc00;
+	text-shadow: 0 0 10px #ff6600, 0 0 20px #ff6600;
+}
+
+.intro p {
+	font-size: 1.2rem;
+	color: #eee;
+	margin-top: 1rem;
+	animation: floatText 3s ease-in-out infinite;
+}
+
+.guild-history {
+	background: linear-gradient(45deg, #20002c, #cbb4d4);
+	font-size: 1.2rem;
+	line-height: 1.6;
+}
+
+.character-section {
+	background: #171616;
+}
+
+.character-section h2 {
+	font-size: 2.5rem;
+	color: #fba500;
+	text-shadow: 0 0 10px #ff6600;
+}
+
+.character-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.character-card {
+	background: #1e1e1e;
+	padding: 1rem;
+	border-radius: 12px;
+	box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+	transition: transform 0.3s;
+}
+
+.character-card:hover {
+	transform: translateY(-10px);
+}
+
+.character-card img {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.magic-types {
+	background: #000;
+}
+
+.magic-types h2 {
+	font-size: 2.2rem;
+	color: #ffcc00;
+	text-shadow: 0 0 10px #ff6600;
+}
+
+.magic-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
+.magic-card {
+	background: radial-gradient(circle, #ff6600, #1e1e1e);
+	padding: 1rem 2rem;
+	border-radius: 20px;
+	box-shadow: 0 0 10px #ff6600;
+	font-weight: bold;
+	transition: transform 0.3s;
+}
+
+.magic-card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 25px #f80;
+}
+
+.footer {
+	background: #0d0d0d;
+	text-align: center;
+	padding: 1.5rem;
+	color: #999;
+	font-size: 0.9rem;
+}
